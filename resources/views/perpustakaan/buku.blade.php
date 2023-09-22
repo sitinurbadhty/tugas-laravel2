@@ -1,43 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>buku</title>
-</head>
-<body>
-    <h1>Data Buku</h1>
-    <form action="{{ route('get_petugas') }}">
-        <label for="id_buku">ID Buku</label>
-        <br>
-        <input type="text" name="id_buku" id="id_buku">
-        <br><br>
-        <label for="kode_buku">Kode Buku</label>
-        <br>
-        <input type="text" name="kode_buku" id="kode_buku">
-        <br><br>
-        <label for="judul">Judul</label>
-        <br>
-        <input type="text" name="judul" id="judul">
-        <br><br>
-        <label for="penulis" name="penulis" id="penulis">Penulis</label>
-        <br>
-        <input type="text" name="penulis" id="penulis">
-        <br><br>
-        <label for="penerbit" name="penerbit" id="penerbit">Penerbit</label>
-        <br>
-        <input type="text" name="penerbit" id="penerbit">
-        <br><br>
-        <label for="tahun_terbit" name="tahun_terbit" id="tahun_terbit">Tahun Terbit</label>
-        <br>
-        <input type="number" name="tahun_terbit" id="tahun_terbit">
-        <br><br>
-        <label for="stok" name="stok" id="stok">Stok Buku</label>
-        <br>
-        <input type="number" name="stok" id="stok">
-        <br><br>
-        <input type="submit" value="Next">
-    </form>
-</body>
-</html>
+@extends('separate.master')
+
+@section('content')
+<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Form Input Data Buku</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="/book/store" method="POST">
+                @csrf
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Kode Buku</label>
+                    <input type="number" class="form-control" name="kode_buku" placeholder="Input Kode Buku">
+                    <label for="exampleInputEmail1">Judul Buku</label>
+                    <input type="text" class="form-control" name="judul_buku" placeholder="Input Judul Buku">
+                    <label for="exampleInputEmail1">Penulis Buku</label>
+                    <input type="text" class="form-control" name="penulis_buku" placeholder="Input Penulis Buku">
+                    <label for="exampleInputEmail1">Penerbit Buku</label>
+                    <input type="text" class="form-control" name="penerbit_buku" placeholder="Input Penerbit Buku">
+                    <label for="exampleInputEmail1">Tahun Penerbitan</label>
+                    <input type="number" class="form-control" name="tahun_penerbit" placeholder="Input Tahun Penerbitan">
+                    <label for="exampleInputEmail1">Stok Buku</label>
+                    <input type="number" class="form-control" name="stok" placeholder="Input Sisa Stock">
+                  </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" name="submit" value="Save" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+@endsection

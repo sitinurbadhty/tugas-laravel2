@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\PerpustakaanController;
+use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\MasterController;
+use App\Http\Controllers\PetugasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
-Route::get('/perpustakaan/anggota', [PerpustakaanController::class, 'anggota'])->name('get_anggota');
+// Route::get('/welcome', function () {
+//     return view('welcome');
+// })-> name('welcome');
 
-Route::get('/perpustakaan/buku', [PerpustakaanController::class, 'buku'])->name('get_buku');
+// Route::get('/form', function () {
+//     return view('form');
+// })-> name('form');
 
-Route::get('/perpustakaan/petugas', [PerpustakaanController::class, 'petugas'])->name('get_petugas');
-
-Route::get('/about', function () {
-    return view('layouts.master');
-});
+Route::get('/', [MasterController::class, 'master'])->name('separate.master');
+Route::get('/buku', [BukuController::class, 'create'])->name('buku');
+Route::resource('/anggota', AnggotaController::class);
+Route::resource('/petugas', PetugasController::class);
